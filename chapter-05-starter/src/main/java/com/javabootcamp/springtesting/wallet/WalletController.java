@@ -15,10 +15,19 @@ public class WalletController {
         this.walletService = walletService;
     }
 
+    // /api/wallets/me
+
+    @GetMapping("/me")
+    Message me() {
+        return new Message("Hello, Wallet!");
+    }
+
     @GetMapping("")
     public List<Wallet> getWalletList() {
         return this.walletService.getWalletList();
     }
+
+
 
     @PostMapping("")
     public Wallet createWallet(@Valid @RequestBody WalletRequestDto requestDto) {
@@ -26,4 +35,6 @@ public class WalletController {
     }
 }
 
+record Message(String message) {
 
+}
